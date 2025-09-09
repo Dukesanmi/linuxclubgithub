@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Club - Master Linux & Launch Your Tech Career</title>
+    <meta name="description" content="Learn Linux fundamentals for DevOps, Cloud Computing, Cybersecurity, and Networking careers. 100% Free for 6 months!">
+    <meta name="keywords" content="Linux, DevOps, Cloud Computing, Cybersecurity, Networking, System Administration, Free Course">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://linuxclub.tech/">
+    <meta property="og:title" content="Linux Club - Master Linux & Launch Your Tech Career">
+    <meta property="og:description" content="Learn Linux fundamentals for high-demand tech careers. 100% Free for 6 months!">
+    <meta property="og:image" content="https://linuxclub.tech/linux-club-social.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ff88, #ffffff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff88;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+        
+        .feature-card h3 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-large {
+            font-size: 1.5rem;
+            padding: 1.5rem 3rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #1a1a3e 0%, #2a2a5e 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            color: #00ff88;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #cccccc;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+        
+        .dashboard {
+            display: none;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(45deg, rgba(0, 255, 136, 0.2), rgba(0, 204, 106, 0.2));
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .membership-status {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 8px;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-3px);
+        }
+        
+        .success { color: #00ff88; font-weight: bold; }
+        .loading { color: #ffaa00; }
+        .error { color: #ff6b6b; }
+        
+        .hidden { display: none; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .features { grid-template-columns: 1fr; }
+            .nav { flex-direction: column; gap: 1rem; }
+            .stats { grid-template-columns: 1fr; }
+            .courses-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">🐧 Linux Club</div>
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="showLogin()">Login</button>
+                    <button class="btn" onclick="showSignup()">Join Free</button>
+                </div>
+            </nav>
+            
+            <div class="header">
+                <h1>🐧 Master Linux & Launch Your Tech Career</h1>
+                <p class="subtitle">Join thousands of students learning Linux fundamentals that prepare you for DevOps, Cloud Computing, Cybersecurity, and Networking careers. <strong>100% Free for 6 months!</strong></p>
+                
+                <div class="cta-section">
+                    <button class="btn btn-large" onclick="showSignup()">Start Learning Now - It's Free!</button>
+                    <p style="margin-top: 1rem; color: #cccccc;">No credit card required • 6 months free access • Join 10,000+ students</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div>Comprehensive Courses</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div>Hours of Content</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10k+</div>
+                    <div>Active Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div>Job Placement Rate</div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🚀 Career-Ready Skills</h3>
+                    <p>Learn Linux fundamentals that directly prepare you for high-demand careers in DevOps, Cloud Computing, Cybersecurity, and Network Administration. Our curriculum is designed by industry experts.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💰 100% Free Access</h3>
+                    <p>Complete access to all courses and resources for 6 months. No hidden costs, no premium tiers, no upsells. We believe quality Linux education should be accessible to everyone.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 Hands-on Learning</h3>
+                    <p>Interactive terminal sessions, real-world projects, and practical exercises that build confidence. Learn by doing with our integrated Linux lab environment.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📚 Comprehensive Curriculum</h3>
+                    <p>From basic commands to advanced system administration. Our 7-course program covers everything you need to become a Linux professional.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🏆 Industry Recognition</h3>
+                    <p>Earn certificates that are recognized by top tech companies. Our graduates work at Google, Amazon, Microsoft, and other leading organizations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>👥 Community Support</h3>
+                    <p>Join a vibrant community of learners and get help from experienced mentors. Access to exclusive Discord server and weekly live sessions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Dashboard -->
+    <div id="dashboard" class="dashboard">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">🐧 Linux Club</div>
+                <div class="nav-buttons">
+                    <span id="user-name" style="color: #00ff88; margin-right: 1rem;"></span>
+                    <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+            
+            <div class="welcome-banner">
+                <h1 id="welcome-user">Welcome back!</h1>
+                <p>Continue your Linux journey and build skills for your future career</p>
+            </div>
+
+            <div class="membership-status">
+                <h3>Membership Status</h3>
+                <p id="membership-info">Loading...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="membership-progress"></div>
+                </div>
+            </div>
+
+            <div>
+                <h2>Your Learning Path</h2>
+                <div id="courses-list" class="courses-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login-modal')">&times;</span>
+            <h2>Welcome Back to Linux Club</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" required placeholder="Your password">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Login to Dashboard</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Don't have an account? <a href="#" onclick="closeModal('login-modal'); showSignup();" style="color: #00ff88;">Join Free - No Credit Card Required</a>
+            </p>
+            <p style="text-align: center; margin-top: 0.5rem; color: #888;">
+                Demo: demo@linuxclub.tech / demo123
+            </p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signup-modal')">&times;</span>
+            <h2>Join Linux Club - Start Learning Today!</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name:</label>
+                    <input type="text" id="signup-name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email:</label>
+                    <input type="email" id="signup-email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" required minlength="8" placeholder="At least 8 characters">
+                </div>
+                <div class="form-group">
+                    <label for="signup-age">Age:</label>
+                    <input type="number" id="signup-age" required min="16" max="120" placeholder="18">
+                    <small style="color: #888;">Must be 16 or older</small>
+                </div>
+                <div class="form-group">
+                    <label for="signup-experience">Linux Experience:</label>
+                    <select id="signup-experience" required>
+                        <option value="">Select your current level</option>
+                        <option value="beginner">Complete Beginner (Never used Linux)</option>
+                        <option value="some">Some Basic Knowledge (Used a few commands)</option>
+                        <option value="intermediate">Intermediate (Comfortable with terminal)</option>
+                        <option value="advanced">Advanced (System administration experience)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="signup-goals">Career Goals:</label>
+                    <select id="signup-goals" required>
+                        <option value="">What interests you most?</option>
+                        <option value="devops">DevOps Engineering</option>
+                        <option value="cloud">Cloud Computing (AWS, Azure, GCP)</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="networking">Network Administration</option>
+                        <option value="sysadmin">System Administration</option>
+                        <option value="general">General Linux Skills</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Create My Free Account</button>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #cccccc;">
+                    🎉 By signing up, you get <strong>6 months of completely free access</strong> to all courses, labs, and community features. No credit card required!
+                </p>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Already have an account? <a href="#" onclick="closeModal('signup-modal'); showLogin();" style="color: #00ff88;">Login Here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const BACKEND_URL = window.location.protocol + '//' + window.location.hostname + ':5000';
+        let currentUser = null;
+
+        // Modal functions
+        function showLogin() {
+            document.getElementById('login-modal').style.display = 'block';
+        }
+
+        function showSignup() {
+            document.getElementById('signup-modal').style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Login form handler
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    currentUser = data.user;
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    closeModal('login-modal');
+                    showDashboard();
+                    
+                    // Show welcome message
+                    const welcomeMsg = document.createElement('div');
+                    welcomeMsg.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(45deg, #00ff88, #00cc6a); color: #000; padding: 1rem 2rem; border-radius: 10px; z-index: 10000; font-weight: bold;';
+                    welcomeMsg.textContent = `Welcome back, ${data.user.name}! 🎉`;
+                    document.body.appendChild(welcomeMsg);
+                    setTimeout(() => welcomeMsg.remove(), 5000);
+                } else {
+                    alert(data.message || 'Login failed. Please check your credentials.');
+                }
+            } catch (error) {
+                alert('Login error: ' + error.message);
+                console.error('Login error:', error);
+            }
+        });
+
+        // Signup form handler
+        document.getElementById('signup-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const age = parseInt(document.getElementById('signup-age').value);
+            if (age < 16) {
+                alert('You must be at least 16 years old to join Linux Club.');
+                return;
+            }
+
+            const userData = {
+                name: document.getElementById('signup-name').value,
+                email: document.getElementById('signup-email').value,
+                password: document.getElementById('signup-password').value,
+                age: age,
+                experience: document.getElementById('signup-experience').value,
+                goals: document.getElementById('signup-goals').value
+            };
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    currentUser = data.user;
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    closeModal('signup-modal');
+                    showDashboard();
+                    
+                    // Show welcome message
+                    const welcomeMsg = document.createElement('div');
+                    welcomeMsg.style.cssText = 'position: fixed; top: 20px; right: 20px; background: linear-gradient(45deg, #00ff88, #00cc6a); color: #000; padding: 1rem 2rem; border-radius: 10px; z-index: 10000; font-weight: bold; max-width: 300px;';
+                    welcomeMsg.textContent = `🎉 Welcome to Linux Club, ${data.user.name}! Your 6-month free membership is now active. Let's start learning!`;
+                    document.body.appendChild(welcomeMsg);
+                    setTimeout(() => welcomeMsg.remove(), 8000);
+                } else {
+                    alert(data.message || 'Registration failed. Please try again.');
+                }
+            } catch (error) {
+                alert('Registration error: ' + error.message);
+                console.error('Registration error:', error);
+            }
+        });
+
+        // Show dashboard
+        function showDashboard() {
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            
+            if (currentUser) {
+                document.getElementById('welcome-user').textContent = `Welcome back, ${currentUser.name}!`;
+                document.getElementById('user-name').textContent = currentUser.name;
+                
+                // Calculate membership progress
+                const signupDate = new Date(currentUser.signupDate);
+                const expirationDate = new Date(currentUser.expirationDate);
+                const now = new Date();
+                const totalDays = Math.ceil((expirationDate - signupDate) / (1000 * 60 * 60 * 24));
+                const daysLeft = Math.max(0, Math.ceil((expirationDate - now) / (1000 * 60 * 60 * 24)));
+                const progress = Math.max(0, ((totalDays - daysLeft) / totalDays) * 100);
+                
+                document.getElementById('membership-info').innerHTML = `
+                    <strong>Status:</strong> ${daysLeft > 0 ? '✅ Active' : '❌ Expired'} | 
+                    <strong>Days Remaining:</strong> ${daysLeft} days | 
+                    <strong>Expires:</strong> ${expirationDate.toLocaleDateString()}
+                `;
+                document.getElementById('membership-progress').style.width = `${progress}%`;
+                
+                loadCourses();
+            }
+        }
+
+        // Load courses
+        async function loadCourses() {
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/courses`);
+                const data = await response.json();
+                
+                const coursesList = document.getElementById('courses-list');
+                coursesList.innerHTML = '';
+                
+                data.courses.forEach((course, index) => {
+                    const courseCard = document.createElement('div');
+                    courseCard.className = 'course-card';
+                    courseCard.innerHTML = `
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <span style="font-size: 2rem; margin-right: 1rem;">${course.icon}</span>
+                            <div>
+                                <h3>${course.title}</h3>
+                                <p style="margin: 0; color: #cccccc; font-size: 0.9rem;">${course.description}</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="color: #00ff88; font-size: 0.9rem;">
+                                📈 ${course.difficulty} • ⏱️ ${course.estimatedHours}h • 📚 Course ${index + 1}/7
+                            </div>
+                            <button class="btn" onclick="startCourse('${course.id}')">
+                                ${index === 0 ? 'Start Here' : 'Continue'}
+                            </button>
+                        </div>
+                    `;
+                    coursesList.appendChild(courseCard);
+                });
+            } catch (error) {
+                document.getElementById('courses-list').innerHTML = '<p style="color: #ff6b6b;">Failed to load courses. Please refresh the page.</p>';
+                console.error('Failed to load courses:', error);
+            }
+        }
+
+        // Start course (placeholder for future lesson system)
+        function startCourse(courseId) {
+            alert(`🚀 Starting course: ${courseId}\n\nThis will open the interactive lesson viewer in the complete version!\n\nFor now, you can explore the course content and practice Linux commands in your own terminal.`);
+        }
+
+        // Logout
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('landing-page').style.display = 'block';
+            
+            // Show logout message
+            const logoutMsg = document.createElement('div');
+            logoutMsg.style.cssText = 'position: fixed; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.1); color: #fff; padding: 1rem 2rem; border-radius: 10px; z-index: 10000;';
+            logoutMsg.textContent = 'You have been logged out. Thanks for learning with Linux Club! 👋';
+            document.body.appendChild(logoutMsg);
+            setTimeout(() => logoutMsg.remove(), 4000);
+        }
+
+        // Check for existing login on page load
+        window.addEventListener('load', function() {
+            const token = localStorage.getItem('token');
+            const userData = localStorage.getItem('user');
+            
+            if (token && userData) {
+                try {
+                    currentUser = JSON.parse(userData);
+                    
+                    // Check if membership is still active
+                    const expirationDate = new Date(currentUser.expirationDate);
+                    const now = new Date();
+                    
+                    if (now < expirationDate && currentUser.isActive) {
+                        showDashboard();
+                    } else {
+                        // Membership expired
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        alert('Your Linux Club membership has expired. Please contact support to renew or register for a new 6-month free trial!');
+                    }
+                } catch (error) {
+                    console.error('Failed to parse user data:', error);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                }
+            }
+        });
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Escape key closes modals
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+            
+            // Ctrl+L for quick login (development helper)
+            if (e.ctrlKey && e.key === 'l') {
+                e.preventDefault();
+                showLogin();
+            }
+            
+            // Ctrl+R for registration
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                showSignup();
+            }
+        });
+    </script>
+</body>
+</html>
